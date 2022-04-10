@@ -1,0 +1,32 @@
+{
+  "name": "@cli-blaze/error",
+  "version": "0.0.1",
+  "license": "Apache-2.0",
+  "description": "Blazing fast CLI design framework.",
+  "type": "module",
+  "main": "index.js",
+  "publishConfig": {
+    "access": "public"
+  },
+  "keywords": [
+    "cli",
+    "framework",
+    "flags",
+    "commands",
+    "multi process"
+  ],
+  "author": {
+    "name": "Simone Del Popolo",
+    "email": "simonedelpopolo@outlook.com",
+    "url": "https://github.com/simonedelpopolo"
+  },
+  "homepage": "https://github.com/simonedelpopolo/cli-blaze#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/simonedelpopolo/cli-blaze.git"
+  },
+  "bugs": {
+    "email": "simonedelpopolo@outlook.com",
+    "url": "https://github.com/simonedelpopolo/cli-blaze/issues"
+  }
+}
