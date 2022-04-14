@@ -20,10 +20,15 @@ export default async ( id ) => {
 
     tttt.describe( '# spawn process receives exitCode=1'.bg_yellow().underline().strong(), 'result of the test is delayed'.bg_red().color( 255 ) )
 
-    const exitCode1 = spawn( `${__dirname}process/exitCode1.js`, { stdio:[ 'ignore', process.stdout, process.stderr ] } )
+    await tttt.separator()
+    tttt.describe( '| spawned         ', ` ${id} `.b_yellow(), '        process |' )
+    await tttt.separator()
 
+    const exitCode1 = spawn( `${__dirname}process/exitCode1.js`, { stdio:[ 'ignore', process.stdout, process.stderr, 'ipc' ] } )
+
+    exitCode1.send( id )
     exitCode1.on( 'exit', async code => {
-        console.trace( code )
+
         try{
             assert.ok( code === 1 )
             await tttt.separator( 240, 75, '~' )

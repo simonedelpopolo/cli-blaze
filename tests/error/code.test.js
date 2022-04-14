@@ -15,11 +15,11 @@ export default async ( id ) => {
 
     console.dir( error, { depth:null } )
 
-    await error.add( 'UNKNOWN', 5 )
+    error.add( 'UNKNOWN', 5 )
 
     console.dir( error.error_code, { depth:null } )
 
-    await error.replace( 'UNKNOWN', 152 )
+    error.replace( 'UNKNOWN', 152 )
 
     console.dir( error.error_code, { depth:null } )
 

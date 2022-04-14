@@ -1,10 +1,13 @@
 {
   "extends": [
-    "eslint:recommended"
+    "eslint:recommended",
+    "plugin:@typescript-eslint/recommended"
   ],
   "plugins": [
-    "jsdoc"
+    "jsdoc",
+    "@typescript-eslint"
   ],
+  "parser": "@typescript-eslint/parser",
   "env": {
     "es2022": true,
     "node": true
@@ -22,6 +25,7 @@
     }
   },
   "rules": {
+    "@typescript-eslint/no-this-alias": "off",
     "object-curly-spacing": [
       "warn",
       "always"

@@ -1,12 +1,13 @@
 {
   "name": "@cli-blaze/input",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "license": "Apache-2.0",
   "description": "Blazing fast CLI design framework.",
   "type": "module",
   "main": "index.js",
   "dependencies": {
-    "oftypes": "^1.7.12"
+    "oftypes": "^1.7.12",
+    "json-swiss-knife": "^1.6.13"
   },
   "publishConfig": {
     "access": "public"
