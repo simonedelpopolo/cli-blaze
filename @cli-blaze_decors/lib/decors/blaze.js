@@ -11,7 +11,7 @@ const Blaze = {
      * Black foreground
      * Object Interface
      *
-     * @param {string|Buffer} [chars=''] - to be rendered
+     * @param {string} [chars=''] - to be rendered
      * @returns {string}
      */
     black( chars ){
@@ -23,7 +23,7 @@ const Blaze = {
      * Bright black foreground
      * Object Interface
      *
-     * @param {string|Buffer} chars - to be rendered
+     * @param {string} chars - to be rendered
      * @returns {string}
      */
     b_black( chars ){
@@ -35,7 +35,7 @@ const Blaze = {
      * Black background
      * Object Interface
      *
-     * @param {string|Buffer} chars - to be rendered
+     * @param {string} chars - to be rendered
      * @returns {string}
      */
     bg_black( chars ){
@@ -47,7 +47,7 @@ const Blaze = {
      * Black background
      * Object Interface
      *
-     * @param {string|Buffer} chars - to be rendered
+     * @param {string} chars - to be rendered
      * @returns {string}
      */
     b_bg_black( chars ){
@@ -59,7 +59,7 @@ const Blaze = {
      * Blue foreground
      * Object Interface
      *
-     * @param {string|Buffer} [chars=''] - to be rendered
+     * @param {string} [chars=''] - to be rendered
      * @returns {string}
      */
     blue( chars ){
@@ -71,7 +71,7 @@ const Blaze = {
      * Bright blue foreground
      * Object Interface
      *
-     * @param {string|Buffer} chars - to be rendered
+     * @param {string} chars - to be rendered
      * @returns {string}
      */
     b_blue( chars ){
@@ -83,7 +83,7 @@ const Blaze = {
      * Blue background
      * Object Interface
      *
-     * @param {string|Buffer} chars - to be rendered
+     * @param {string} chars - to be rendered
      * @returns {string}
      */
     bg_blue( chars ){
@@ -95,7 +95,7 @@ const Blaze = {
      * Bright Blue background
      * Object Interface
      *
-     * @param {string|Buffer} chars - to be rendered
+     * @param {string} chars - to be rendered
      * @returns {string}
      */
     b_bg_blue( chars ){
@@ -108,7 +108,7 @@ const Blaze = {
      * String.prototype extended
      *
      * @param {number?} code - [0-255] range color
-     * @param {string|Buffer?} chars - to be rendered
+     * @param {string?} chars - to be rendered
      * @returns {string}
      */
     color( code, chars ){
@@ -121,7 +121,7 @@ const Blaze = {
      * String.prototype extended
      *
      * @param {number?} code - [0-255] range color
-     * @param {string|Buffer?} chars - to be rendered
+     * @param {string?} chars - to be rendered
      * @returns {string}
      */
     bg_color( code, chars ){
@@ -133,7 +133,7 @@ const Blaze = {
      * Cyan foreground
      * Object Interface
      *
-     * @param {string|Buffer} [chars=''] - to be rendered
+     * @param {string} [chars=''] - to be rendered
      * @returns {string}
      */
     cyan( chars ){
@@ -145,7 +145,7 @@ const Blaze = {
      * Bright cyan foreground
      * Object Interface
      *
-     * @param {string|Buffer} chars - to be rendered
+     * @param {string} chars - to be rendered
      * @returns {string}
      */
     b_cyan( chars ){
@@ -157,7 +157,7 @@ const Blaze = {
      * Cyan background
      * Object Interface
      *
-     * @param {string|Buffer} chars - to be rendered
+     * @param {string} chars - to be rendered
      * @returns {string}
      */
     bg_cyan( chars ){
@@ -169,7 +169,7 @@ const Blaze = {
      * Bright Cyan background
      * Object Interface
      *
-     * @param {string|Buffer} chars - to be rendered
+     * @param {string} chars - to be rendered
      * @returns {string}
      */
     b_bg_cyan( chars ){
@@ -181,7 +181,7 @@ const Blaze = {
      * Green foreground
      * Object Interface
      *
-     * @param {string|Buffer} [chars=''] - to be rendered
+     * @param {string} [chars=''] - to be rendered
      * @returns {string}
      */
     green( chars ){
@@ -193,7 +193,7 @@ const Blaze = {
      * Bright green foreground
      * Object Interface
      *
-     * @param {string|Buffer} chars - to be rendered
+     * @param {string} chars - to be rendered
      * @returns {string}
      */
     b_green( chars ){
@@ -205,7 +205,7 @@ const Blaze = {
      * Green background
      * Object Interface
      *
-     * @param {string|Buffer} chars - to be rendered
+     * @param {string} chars - to be rendered
      * @returns {string}
      */
     bg_green( chars ){
@@ -217,7 +217,7 @@ const Blaze = {
      * Bright Green background
      * Object Interface
      *
-     * @param {string|Buffer} chars - to be rendered
+     * @param {string} chars - to be rendered
      * @returns {string}
      */
     b_bg_green( chars ){
@@ -229,7 +229,7 @@ const Blaze = {
      * Magenta foreground
      * Object Interface
      *
-     * @param {string|Buffer} [chars=''] - to be rendered
+     * @param {string} [chars=''] - to be rendered
      * @returns {string}
      */
     magenta( chars ){
@@ -241,7 +241,7 @@ const Blaze = {
      * Bright magenta foreground
      * Object Interface
      *
-     * @param {string|Buffer} chars - to be rendered
+     * @param {string} chars - to be rendered
      * @returns {string}
      */
     b_magenta( chars ){
@@ -253,7 +253,7 @@ const Blaze = {
      * Magenta background
      * Object Interface
      *
-     * @param {string|Buffer} chars - to be rendered
+     * @param {string} chars - to be rendered
      * @returns {string}
      */
     bg_magenta( chars ){
@@ -265,7 +265,7 @@ const Blaze = {
      * Bright Magenta background
      * Object Interface
      *
-     * @param {string|Buffer} chars - to be rendered
+     * @param {string} chars - to be rendered
      * @returns {string}
      */
     b_bg_magenta( chars ){
@@ -277,7 +277,7 @@ const Blaze = {
      * Reverse the colors
      * String.prototype extended
      *
-     * @param {string|Buffer?} chars - to be rendered
+     * @param {string?} chars - to be rendered
      * @returns {string}
      */
     negative( chars ){
@@ -289,7 +289,7 @@ const Blaze = {
      * Red foreground
      * Object Interface
      *
-     * @param {string|Buffer} [chars=''] - to be rendered
+     * @param {string} [chars=''] - to be rendered
      * @returns {string}
      */
     red( chars ){
@@ -301,7 +301,7 @@ const Blaze = {
      * Bright red foreground
      * Object Interface
      *
-     * @param {string|Buffer} chars - to be rendered
+     * @param {string} chars - to be rendered
      * @returns {string}
      */
     b_red( chars ){
@@ -313,7 +313,7 @@ const Blaze = {
      * Red background
      * Object Interface
      *
-     * @param {string|Buffer} chars - to be rendered
+     * @param {string} chars - to be rendered
      * @returns {string}
      */
     bg_red( chars ){
@@ -325,7 +325,7 @@ const Blaze = {
      * Bright Red background
      * Object Interface
      *
-     * @param {string|Buffer} chars - to be rendered
+     * @param {string} chars - to be rendered
      * @returns {string}
      */
     b_bg_red( chars ){
@@ -338,7 +338,7 @@ const Blaze = {
      * Object Interface
      *
      * @param {number[]?} code - [0-255 | 0-255 | 0-255] range rgb
-     * @param {string|Buffer?} chars - to be rendered
+     * @param {string?} chars - to be rendered
      * @returns {string}
      */
     rgb( code, chars ){
@@ -351,7 +351,7 @@ const Blaze = {
      * Object Interface
      *
      * @param {number[]?} code - [0-255 | 0-255 | 0-255] range rgb
-     * @param {string|Buffer?} chars - to be rendered
+     * @param {string?} chars - to be rendered
      * @returns {string}
      */
     bg_rgb( code, chars ){
@@ -363,7 +363,7 @@ const Blaze = {
      * Strong/Bold text
      * String.prototype extended
      *
-     * @param {string|Buffer?} chars - to be rendered
+     * @param {string?} chars - to be rendered
      * @returns {string}
      */
     strong( chars ){
@@ -375,7 +375,7 @@ const Blaze = {
      * Underlined text
      * String.prototype extended
      *
-     * @param {string|Buffer?} chars - to be rendered
+     * @param {string?} chars - to be rendered
      * @returns {string}
      */
     underline( chars ){
@@ -387,7 +387,7 @@ const Blaze = {
      * White foreground
      * Object Interface
      *
-     * @param {string|Buffer} [chars=''] - to be rendered
+     * @param {string} [chars=''] - to be rendered
      * @returns {string}
      */
     white( chars ){
@@ -399,7 +399,7 @@ const Blaze = {
      * Bright white foreground
      * Object Interface
      *
-     * @param {string|Buffer} chars - to be rendered
+     * @param {string} chars - to be rendered
      * @returns {string}
      */
     b_white( chars ){
@@ -411,7 +411,7 @@ const Blaze = {
      * White background
      * Object Interface
      *
-     * @param {string|Buffer} chars - to be rendered
+     * @param {string} chars - to be rendered
      * @returns {string}
      */
     bg_white( chars ){
@@ -423,7 +423,7 @@ const Blaze = {
      * Bright White background
      * Object Interface
      *
-     * @param {string|Buffer} chars - to be rendered
+     * @param {string} chars - to be rendered
      * @returns {string}
      */
     b_bg_white( chars ){
@@ -435,7 +435,7 @@ const Blaze = {
      * Yellow foreground
      * Object Interface
      *
-     * @param {string|Buffer} [chars=''] - to be rendered
+     * @param {string} [chars=''] - to be rendered
      * @returns {string}
      */
     yellow( chars ){
@@ -447,7 +447,7 @@ const Blaze = {
      * Bright yellow foreground
      * Object Interface
      *
-     * @param {string|Buffer} chars - to be rendered
+     * @param {string} chars - to be rendered
      * @returns {string}
      */
     b_yellow( chars ){
@@ -459,7 +459,7 @@ const Blaze = {
      * Yellow background
      * Object Interface
      *
-     * @param {string|Buffer} chars - to be rendered
+     * @param {string} chars - to be rendered
      * @returns {string}
      */
     bg_yellow( chars ){
@@ -471,7 +471,7 @@ const Blaze = {
      * Bright Yellow background
      * Object Interface
      *
-     * @param {string|Buffer} chars - to be rendered
+     * @param {string} chars - to be rendered
      * @returns {string}
      */
     b_bg_yellow( chars ){
@@ -484,7 +484,7 @@ const Blaze = {
  * Extended String.prototype && TypeArray.prototype
  * And Object Interface
  *
- * @param {string|Buffer} [chars=''] - to be rendered
+ * @param {string} [chars=''] - to be rendered
  * @param {string|number} color - to be rendered
  * @param {string} variant - to be rendered
  * @returns {string}

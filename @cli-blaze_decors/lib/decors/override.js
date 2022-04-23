@@ -2,8 +2,7 @@ import Blaze from './blaze.js'
 
 /**
  * Extends String.prototype with a given prefix.
- * - Do Not pass argument prefix to Extend the String.prototype & Buffer.prototype without a prefix ⚠ not good practice anyway :)
- * - dynamically imports this same file and excludes this same function from being added to String.prototype
+ * - Do Not pass argument prefix to Extend the String.prototype without a prefix ⚠ not good practice anyway :)
  *
  * @example
  * import { override, sym } from @cli-blaze/decors'
@@ -31,12 +30,9 @@ export default function override( prefix, symbol ){
         symbol = false
 
     for ( const func in  Blaze ) {
-        if ( symbol ){
-            String.prototype[ Symbol.for ( `${ prefix }${ Blaze[ func ].name }` ) ] = Blaze[ func ]
-            Buffer.prototype[ Symbol.for( `${ prefix }${ Blaze[ func ].name }` ) ] = Blaze[ func ]
-        }else {
-            String.prototype[ `${ prefix }${ Blaze[ func ].name }` ] = Blaze[ func ]
-            Buffer.prototype[ `${ prefix }${ Blaze[ func ].name }` ] = Blaze[ func ]
-        }
+
+        if ( symbol ) String.prototype[ Symbol.for ( `${ prefix }${ Blaze[ func ].name }` ) ] = Blaze[ func ]
+        else String.prototype[ `${ prefix }${ Blaze[ func ].name }` ] = Blaze[ func ]
+
     }
 }

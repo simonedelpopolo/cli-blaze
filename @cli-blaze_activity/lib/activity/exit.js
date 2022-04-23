@@ -7,10 +7,10 @@ import { stderr }  from '../../index.js'
  *
  * @param {string|Buffer|Uint8Array} message - of error
  * @param {Error=} error_type - Default dynamically generated error message based on process.title
- * @param {number=} [exit_code=4] - for the process
+ * @param {number=} [exit_code=1] - for the process
  * @returns {Promise<void>|void}
  */
-export default async function exit( message, error_type = Error( `${process.title} ♠ error - internal` ), exit_code = 4 ){
+export default async function exit( message, error_type = new Error( `${process.title} ♠ error - internal` ), exit_code = 1 ){
 
     let type
     for await ( const check of await exit_argument_type_check( message, error_type, exit_code ) ) {

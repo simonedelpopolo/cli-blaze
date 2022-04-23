@@ -24,11 +24,6 @@ export default async ( id ) => {
     )
 
     tttt.describe( 'hello'.underline().strong().rgb( [ 255, 1, 25 ] ).bg_rgb( [ 14, 1, 25 ] ) )
-    tttt.describe(
-        '.'.bg_rgb(
-            [ 255, 25, 0 ],
-            Buffer.from( 'hello'.green( '        ' ) ) )
-    )
 
     override( undefined, true )
 

@@ -1,3 +1,5 @@
+import { randomUUID } from 'crypto'
+
 /**
  * Object [ input.processor ]
  * parses the process.argv string[] and returns an object.
@@ -6,6 +8,9 @@
  * @returns { Promise<{ object:{ [ p: string ]: any }, keys:string[] }|{ object:{ [ p: string ]: any }, keys:string[] }> }
  */
 export default async function processor( argv ) {
+
+    const uuid_empty = randomUUID()
+    const uuid_equal = randomUUID()
 
     // - old RegExp const regExpression = /\s*[^-\s](?![-])[.?]*[=]*.[.?]*\S*/g
     /**
@@ -22,14 +27,18 @@ export default async function processor( argv ) {
     let argumentsString = ''
 
     argv.forEach( ( string ) => {
-        argumentsString += `${string.replaceAll( ' ', '******' )} `
+        argumentsString += `${string.replaceAll( ' ', uuid_empty )} `
     } )
 
     let process_arguments = []
     const matches = Array.from( argumentsString.matchAll( regExpression ), matches => matches[ 1 ] )
 
-    for ( const index in matches )
-        process_arguments.push( matches[ index ].replaceAll( '******', ' ' ).split( '=' ) )
+    for ( const index in matches ) {
+        process_arguments.push( matches[ index ]
+            .replaceAll( uuid_empty, ' ' )
+            .replace( '=', uuid_equal )
+            .split( uuid_equal ) )
+    }
 
     let obj = Object.fromEntries( process_arguments )
 
