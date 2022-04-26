@@ -1,5 +1,6 @@
 import { error_code } from '@cli-blaze/error'
 import { exit } from '@cli-blaze/activity'
+import { string_ } from 'oftypes'
 
 /**
  * Object [ input.process_title ]
@@ -8,9 +9,10 @@ import { exit } from '@cli-blaze/activity'
  *
  * @param {{object:{[p: string]: any}, keys:string[]}} process_parsed_argv - Object.
  * @param {{[unknown]: (function({object:{[p: string]: any}, keys:string[]}): Promise<{[p:object]:any}>), executable: string[]}} logic - process selection
+ * @param {boolean|string} [ejected=false] - when necessary to skip the process.title check, set this to the process.title that should have been used here
  * @returns {Promise<{[p:object]:any}>|{[p:object]:any}}
  */
-export default async function process_title( process_parsed_argv, logic ){
+export default async function process_title( process_parsed_argv, logic, ejected = false ){
 
     const promise = {
         resolve: null,
@@ -18,7 +20,7 @@ export default async function process_title( process_parsed_argv, logic ){
     }
 
     if( logic.executable.includes( process.title ) ) promise.resolve = await logic[ process.title ]( process_parsed_argv )
-
+    else if( await string_( ejected ) ) promise.resolve = await logic[ ejected ]( process_parsed_argv )
     else promise.reject = true
 
     if( promise.reject ) {

@@ -8,12 +8,11 @@ import { process_title, processor } from '../../index.js'
  *
  * @param {string[]} argv - The process.argv passed to the process.
  * @param {{[unknown]: (function({object:{[p: string]: any}, keys:string[]}): Promise<{[p:object]:any}>), executable: string[]}} logic - process selection
+ * @param {boolean|string} [ejected=false] - when necessary to skip the process.title check, set this to the process.title that should have been used here
  * @returns {Promise<{[p:object]:any}>| {[p:object]:any}}
  */
-export default async function entry_point( argv, logic ) {
+export default async function entry_point( argv, logic, ejected = false ) {
 
-    return process_title(
-        await processor( argv ), logic,
-    )
+    return process_title( await processor( argv ), logic, ejected )
 }
 
