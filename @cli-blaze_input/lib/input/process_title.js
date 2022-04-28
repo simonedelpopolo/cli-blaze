@@ -1,3 +1,4 @@
+import { Blaze } from '@cli-blaze/decors'
 import { error_code } from '@cli-blaze/error'
 import { exit } from '@cli-blaze/activity'
 import { string_ } from 'oftypes'
@@ -23,10 +24,7 @@ export default async function process_title( process_parsed_argv, logic, ejected
     else if( await string_( ejected ) ) promise.resolve = await logic[ ejected ]( process_parsed_argv )
     else promise.reject = true
 
-    if( promise.reject ) {
-        let error = `\x1b[41m        process.title -> \`${ process.title }\` not recognize\x1b[0m\n`
-        await exit( error, new ReferenceError( 'INTERNAL-error' ), error_code.INTERNAL )
-    }
+    if( promise.reject ) await exit( Blaze.red( `        process.title -> \`${ process.title }\` not recognize` ), new ReferenceError( 'INTERNAL-error' ), error_code.INTERNAL )
 
     return promise.resolve
 

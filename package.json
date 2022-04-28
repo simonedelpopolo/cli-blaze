@@ -14,7 +14,7 @@
   "scripts": {
     "eslint": "npx eslint . --ext .js,.ts",
     "test": "npx 4t unit --exclude=process",
-    "coverage": "npx 4t --coverage unit --exclude='process'"
+    "coverage": "npx 4t --coverage unit --exclude='process,process.not.recognize.js'"
   },
   "devDependencies": {
     "eslint": "^8.14.0",

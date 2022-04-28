@@ -497,9 +497,9 @@ function render( chars, color, variant ){
 
     let color_selection
     if( color.constructor.name === 'Number' )
-        color_selection = `${ansi.color[ variant ]}${ color || 0}m`
+        color_selection = `${ansi.color[ variant ]}${ color}m`
     else if ( color.constructor.name === 'Array' ) {
-        const [ r, g, b ] = color || [ 0, 0, 0 ]
+        const [ r, g, b ] = color
         color_selection = `${ansi.color[ variant ]}${r};${g};${b}m`
     }
     else
