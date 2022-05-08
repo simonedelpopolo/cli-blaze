@@ -23,16 +23,16 @@ import Blaze from './blaze.js'
  */
 export default function override( prefix, symbol ){
 
-    if( ! prefix )
-        prefix = ''
+  if( ! prefix )
+    prefix = ''
 
-    if( ! symbol )
-        symbol = false
+  if( ! symbol )
+    symbol = false
 
-    for ( const func in  Blaze ) {
+  for ( const func in  Blaze ) {
 
-        if ( symbol ) String.prototype[ Symbol.for ( `${ prefix }${ Blaze[ func ].name }` ) ] = Blaze[ func ]
-        else String.prototype[ `${ prefix }${ Blaze[ func ].name }` ] = Blaze[ func ]
+    if ( symbol ) String.prototype[ Symbol.for ( `${ prefix }${ Blaze[ func ].name }` ) ] = Blaze[ func ]
+    else String.prototype[ `${ prefix }${ Blaze[ func ].name }` ] = Blaze[ func ]
 
-    }
+  }
 }

@@ -9,14 +9,14 @@ import Blaze from '@cli-blaze/decors/lib/decors/blaze.js'
  */
 export default async ( id ) => {
 
-    tttt.describe( '# ' )
-    await tttt.separator( 240, 75, '~' )
-    await tttt.line()
+  tttt.describe( '# ' )
+  await tttt.separator( 240, 75, '~' )
+  await tttt.line()
 
-    console.log( Blaze.black( 'hello' ) )
-    console.log( Blaze.b_black( 'hello' ) )
-    console.log( Blaze.bg_black( 'hello' ) )
-    console.log( Blaze.b_bg_black( 'hello' ) )
+  console.log( Blaze.black( 'hello' ) )
+  console.log( Blaze.b_black( 'hello' ) )
+  console.log( Blaze.bg_black( 'hello' ) )
+  console.log( Blaze.b_bg_black( 'hello' ) )
 
-    tttt.end_test( id )
+  tttt.end_test( id )
 }

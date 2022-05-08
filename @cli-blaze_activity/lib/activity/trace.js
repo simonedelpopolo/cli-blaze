@@ -5,5 +5,5 @@
  * @param {...*} data - to be printed with console.trace
  */
 export default function trace ( ...data ) {
-    console.trace( ...data )
+  console.trace( ...data )
 }

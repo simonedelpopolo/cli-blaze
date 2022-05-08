@@ -13,16 +13,16 @@
   ],
   "scripts": {
     "eslint": "npx eslint . --ext .js,.ts",
-    "test": "npx 4t unit --exclude=process",
+    "test": "npx 4t unit --exclude=process,process.not.recognize.js",
     "coverage": "npx 4t --coverage unit --exclude='process,process.not.recognize.js'"
   },
   "devDependencies": {
-    "eslint": "^8.14.0",
+    "eslint": "^8.15.0",
     "eslint-plugin-jsdoc": "^39.2.9",
-    "trythistrythat": "^1.8.3",
-    "@typescript-eslint/eslint-plugin": "^5.21.0",
-    "@typescript-eslint/parser": "^5.21.0",
-    "@types/node": "^17.0.29"
+    "trythistrythat": "^1.8.5",
+    "@typescript-eslint/eslint-plugin": "^5.22.0",
+    "@typescript-eslint/parser": "^5.22.0",
+    "@types/node": "^17.0.31"
   },
   "keywords": [
     "cli",

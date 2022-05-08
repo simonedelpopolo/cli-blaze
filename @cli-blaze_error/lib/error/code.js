@@ -5,11 +5,11 @@
  * @type {{COMMAND:1,FLAG:2,TYPE:3,INTERNAL:4}}
  */
 export const error_code ={
-    COMMAND: 1,
-    FLAG: 2,
-    TYPE: 3,
-    INTERNAL: 4,
-    UNKNOWN: 5
+  COMMAND: 1,
+  FLAG: 2,
+  TYPE: 3,
+  INTERNAL: 4,
+  UNKNOWN: 5
 }
 
 /**
@@ -20,7 +20,7 @@ export const error_code ={
  * @param {number} value - exitCode
  */
 export function add( key, value ){
-    error_code[ key ] = value
+  error_code[ key ] = value
 }
 
 /**
@@ -31,5 +31,5 @@ export function add( key, value ){
  * @param {number} value - exitCode
  */
 export function replace( key, value ){
-    error_code[ key ] = value
+  error_code[ key ] = value
 }

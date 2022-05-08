@@ -1,16 +1,14 @@
 #!/usr/bin/env node
+import { Blaze } from '@cli-blaze/decors'
 import { exit } from '@cli-blaze/activity'
-import { override } from '@cli-blaze/decors'
 import { describe, line, separator } from 'trythistrythat'
-
-override()
 
 process.on( 'message', async id => {
 
-    await line()
-    await separator()
-    describe( '| spawned         ', ` ${id} `.b_yellow(), '        process |' )
-    await separator()
-    await exit( 'process exits with code '.red( '1'.yellow() ), undefined, 1 )
+  await line()
+  await separator()
+  describe( Blaze.b_yellow( '| spawned         ' ), ` ${id} `, '        process |' )
+  await separator()
+  await exit( `${Blaze.red( 'process exits with code' )} ${Blaze.yellow( '1' )}`, undefined, 1 )
 } )
 

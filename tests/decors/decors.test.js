@@ -9,25 +9,25 @@ import { Blaze, override, sym } from '@cli-blaze/decors'
  */
 export default async ( id ) => {
 
-    override()
+  override()
 
-    tttt.describe( '# UNIT test [ decors ]' )
-    await tttt.separator( 240, 75, '~' )
-    await tttt.line()
+  tttt.describe( '# UNIT test [ decors ]' )
+  await tttt.separator( 240, 75, '~' )
+  await tttt.line()
 
-    tttt.describe( Blaze.rgb( [ 15, 52, 255 ], 'hello' ) )
-    tttt.describe( Blaze.red( 'hello red' ) )
-    tttt.describe(
-        '.'.rgb(
-            [ 255, 25, 0 ],
-            'hello' )
-    )
+  tttt.describe( Blaze.rgb( [ 15, 52, 255 ], 'hello' ) )
+  tttt.describe( Blaze.red( 'hello red' ) )
+  tttt.describe(
+    '.'.rgb(
+      [ 255, 25, 0 ],
+      'hello' )
+  )
 
-    tttt.describe( 'hello'.underline().strong().rgb( [ 255, 1, 25 ] ).bg_rgb( [ 14, 1, 25 ] ) )
+  tttt.describe( 'hello'.underline().strong().rgb( [ 255, 1, 25 ] ).bg_rgb( [ 14, 1, 25 ] ) )
 
-    override( undefined, true )
+  override( undefined, true )
 
-    tttt.describe( 'hello from symbol call'[ sym( 'magenta' ) ]() )
+  tttt.describe( 'hello from symbol call'[ sym( 'magenta' ) ]() )
 
-    tttt.end_test( id )
+  tttt.end_test( id )
 }

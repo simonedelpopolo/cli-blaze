@@ -15,17 +15,17 @@ import { string_ } from 'oftypes'
  */
 export default async function process_title( process_parsed_argv, logic, ejected = false ){
 
-    const promise = {
-        resolve: null,
-        reject: false
-    }
+  const promise = {
+    resolve: null,
+    reject: false
+  }
 
-    if( logic.executable.includes( process.title ) ) promise.resolve = await logic[ process.title ]( process_parsed_argv )
-    else if( await string_( ejected ) ) promise.resolve = await logic[ ejected ]( process_parsed_argv )
-    else promise.reject = true
+  if( logic.executable.includes( process.title ) ) promise.resolve = await logic[ process.title ]( process_parsed_argv )
+  else if( await string_( ejected ) ) promise.resolve = await logic[ ejected ]( process_parsed_argv )
+  else promise.reject = true
 
-    if( promise.reject ) await exit( Blaze.red( `        process.title -> \`${ process.title }\` not recognize` ), new ReferenceError( 'INTERNAL-error' ), error_code.INTERNAL )
+  if( promise.reject ) await exit( Blaze.red( `        process.title -> \`${ process.title }\` not recognize` ), new ReferenceError( 'INTERNAL-error' ), error_code.INTERNAL )
 
-    return promise.resolve
+  return promise.resolve
 
 }

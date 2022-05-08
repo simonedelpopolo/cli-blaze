@@ -1,3 +1,4 @@
+import { Blaze } from '@cli-blaze/decors'
 import { error_, number_, oftype_, OftypesError } from 'oftypes'
 
 /**
@@ -11,17 +12,18 @@ import { error_, number_, oftype_, OftypesError } from 'oftypes'
  */
 export async function* exit_argument_type_check( message, error_type, exit_code ){
 
-    yield await oftype_( message ) === 'Buffer' ||
+  yield await oftype_( message ) === 'Buffer' ||
           await oftype_( message ) === 'Uint8Array'||
-          await oftype_( message ) === 'String'
-        ? null
-        : OftypesError( `♠ activity.exit.type - error - <oftype>${await oftype_( message ) }</oftype> not allowed for <argument>message</argument>`.b_red() )
+          await oftype_( message ) === 'String' ||
+          await error_( message )
+    ? null
+    : OftypesError( Blaze.b_red( `♠ activity.exit.type - error - <oftype>${await oftype_( message ) }</oftype> not allowed for <argument>message</argument>` ) )
 
-    yield await error_( error_type )
-        ? null
-        : OftypesError( `♠ activity.exit.type - error - <oftype>${await oftype_( error_type ) }</oftype> not allowed for <argument>error_type</argument>`.b_red() )
+  yield await error_( error_type )
+    ? null
+    : OftypesError( Blaze.b_red( `♠ activity.exit.type - error - <oftype>${await oftype_( error_type ) }</oftype> not allowed for <argument>error_type</argument>` ) )
 
-    yield await number_( exit_code, undefined, undefined, false )
-        ? null
-        : OftypesError( `♠ activity.exit.type - error - <oftype>${await oftype_( exit_code ) }</oftype> not allowed for <argument>exit_code</argument>`.b_red() )
+  yield await number_( exit_code, undefined, undefined, false )
+    ? null
+    : OftypesError( Blaze.b_red( `♠ activity.exit.type - error - <oftype>${await oftype_( exit_code ) }</oftype> not allowed for <argument>exit_code</argument>` ) )
 }

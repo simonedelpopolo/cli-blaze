@@ -9,11 +9,11 @@ import Blaze from '@cli-blaze/decors/lib/decors/blaze.js'
  */
 export default async ( id ) => {
 
-    tttt.describe( '# ' )
-    await tttt.separator( 240, 75, '~' )
-    await tttt.line()
+  tttt.describe( '# ' )
+  await tttt.separator( 240, 75, '~' )
+  await tttt.line()
 
-    console.log( Blaze.negative( 'hello' ) )
+  console.log( Blaze.negative( 'hello' ) )
 
-    tttt.end_test( id )
+  tttt.end_test( id )
 }

@@ -13,6 +13,6 @@ import { process_title, processor } from '../../index.js'
  */
 export default async function entry_point( argv, logic, ejected = false ) {
 
-    return process_title( await processor( argv ), logic, ejected )
+  return process_title( await processor( argv ), logic, ejected )
 }
 

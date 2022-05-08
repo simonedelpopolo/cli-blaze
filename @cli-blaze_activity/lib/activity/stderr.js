@@ -10,17 +10,17 @@ import { stderr_argument_type_check } from './stderr/type.js'
  */
 export default async function stderr( message ){
 
-    let type
-    for await ( const check of await stderr_argument_type_check( message ) )
-        type = check
+  let type
+  for await ( const check of await stderr_argument_type_check( message ) )
+    type = check
 
-    return new Promise( ( resolve, reject ) => {
+  return new Promise( ( resolve, reject ) => {
 
-        if( type instanceof Error ) reject( type )
+    if( type instanceof Error ) reject( type )
 
-        else {
-            resolve( type )
-            process.stderr.write( message )
-        }
-    } )
+    else {
+      resolve( type )
+      process.stderr.write( message )
+    }
+  } )
 }

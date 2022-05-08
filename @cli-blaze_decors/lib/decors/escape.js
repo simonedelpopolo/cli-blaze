@@ -1,3 +1,3 @@
 export default {
-    sequence: [ '\x1b[' ]
+  sequence: [ '\x1b[' ]
 }
