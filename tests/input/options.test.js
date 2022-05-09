@@ -66,5 +66,19 @@ export default async ( id ) => {
   }
   else tttt.describe( Blaze.green( 'test passed' ) )
 
+  tttt.describe( '# testing options NOT wrapped in parentheses' )
+  await tttt.separator( 240, 75, '~' )
+  await tttt.line()
+
+  error = await tttt.deeeeepStrictEqual( async() => {
+    return resolvers( await options( 'first:option|second:option' ), { first: 'option', second: 'option' } )
+  } )
+
+  if( error instanceof Error ){
+    tttt.failed( true )
+    tttt.describe( Blaze.red( 'test failed' ) )
+  }else
+    tttt.describe( Blaze.green( 'test passed' ) )
+
   tttt.end_test( id )
 }

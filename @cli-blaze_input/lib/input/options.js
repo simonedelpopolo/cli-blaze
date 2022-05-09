@@ -15,7 +15,7 @@ export default async function options( flag_value, flag_name ) {
 
   const options = matches.length > 0
     ? await match( matches[ 0 ], flag_name )
-    : flag_value
+    : await match( flag_value, flag_name ) === null ? flag_value : await match( flag_value, flag_name )
 
   return new Promise( resolve => {
     resolve( options )
