@@ -2,6 +2,7 @@ import * as Assert from 'node:assert'
 import * as tttt from 'trythistrythat'
 import { Blaze } from '@cli-blaze/decors'
 import { options } from '@cli-blaze/input'
+import { resolvers } from 'trythistrythat'
 
 /**
  * Module filename - /Volumes/code/cli-blaze/tests/input/options.test.js
@@ -15,7 +16,7 @@ export default async ( id ) => {
   await tttt.separator( 240, 75, '~' )
   await tttt.line()
 
-  const actual = await options( 'options(first:option|second:option)', 'test_flag' )
+  const actual = await options( '(first:option|second:option)', 'test_flag' )
   const expected = { first: 'option', second: 'option' }
 
   let error = await tttt.deeeeepStrictEqual( async() => {
@@ -32,7 +33,7 @@ export default async ( id ) => {
     tttt.describe( Blaze.green( 'test passed' ) )
 
   const OptionsError = await options( 'options(first|second:option)', 'test_flag' )
-  const OptionsErrorMessage = ' [json-swiss-knife.property_value] ' + Blaze.red( 'this method accept only Array that have at least two entries or multiple of 2' )+ ' \n' +
+  const OptionsErrorMessage = ' [dissection-error] ' + Blaze.red( 'this method accept only Array that have at least two entries or multiple of 2' )+ ' \n' +
                                 '    @ 4t [...] test_flag -> ' + Blaze.underline( Blaze.strong( Blaze.red( 'first|second:option' ) ) ) + ' \n' +
                                 Blaze.red( '                                    ^' )
   await Assert.throws(
@@ -54,6 +55,16 @@ export default async ( id ) => {
 
       return true
     }, 'gone' )
+
+  const no_options_found = await tttt.oki( async () => {
+    return resolvers( await options( 'it is all right', 'no options' ).catch( error => error ), 'it is all right' )
+  } )
+
+  if( no_options_found instanceof Error ){
+    tttt.failed( true )
+    tttt.describe( Blaze.red( 'test failed' ) )
+  }
+  else tttt.describe( Blaze.green( 'test passed' ) )
 
   tttt.end_test( id )
 }

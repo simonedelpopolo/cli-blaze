@@ -27,7 +27,7 @@ export default async ( id ) => {
   tttt.describe( '| spawned         ', ` ${Blaze.b_yellow( id )} `, '        process |' )
   await tttt.separator()
 
-  let exitCode1 = spawn( `${__dirname}process/exitCode1.js`, { stdio:[ 'ignore', process.stdout, process.stderr, 'ipc' ] } )
+  let exitCode1 = spawn( `${__dirname}process/exitCode1.js`, { stdio:[ 'ignore', 'inherit', 'inherit', 'ipc' ] } )
 
   exitCode1.send( id )
   exitCode1.on( 'exit', async code => {
