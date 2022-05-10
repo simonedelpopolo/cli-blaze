@@ -14,9 +14,10 @@ export default async ( id ) => {
   await tttt.separator( 240, 75, '~' )
   await tttt.line()
 
-  let data = await dissect_prop_val( 'string:json|activate:true', '|', true )
+  tttt.describe( '# data given correctly' )
+  let data = await dissect_prop_val( 'string:json|activate:true', '|', true ).catch( error => error )
 
-  let result = await tttt.deeeeepStrictEqual( () => {
+  let result = await tttt.deeeeepStrictEqual( async () => {
     return tttt.resolvers( data, { string:'json', activate: 'true' } )
   } )
 
@@ -26,10 +27,11 @@ export default async ( id ) => {
   }
   else tttt.describe( Blaze.green( 'test passed' ) )
 
+  tttt.describe( '# data undefined' )
   data = await dissect_prop_val( undefined, '|', true ).catch( error => error )
 
-  result = await tttt.oki( () => {
-    return tttt.resolvers( data instanceof Error, true )
+  result = await tttt.oki( async () => {
+    return tttt.resolvers( data, 'body argument must be provided' )
   } )
 
   if( result instanceof Error ){
@@ -38,10 +40,11 @@ export default async ( id ) => {
   }
   else tttt.describe( Blaze.green( 'test passed' ) )
 
+  tttt.describe( '# data EMPTY' )
   data = await dissect_prop_val( '', '|', true ).catch( error => error )
 
-  result = await tttt.oki( () => {
-    return tttt.resolvers( data.message, 'body argument must NOT be empty' )
+  result = await tttt.oki( async () => {
+    return tttt.resolvers( data, 'body argument must NOT be empty' )
   } )
 
   if( result instanceof Error ){
@@ -50,9 +53,10 @@ export default async ( id ) => {
   }
   else tttt.describe( Blaze.green( 'test passed' ) )
 
+  tttt.describe( '# data given PARTIALLY' )
   data = await dissect_prop_val( 'string:json|activate', '|', true ).catch( error => error )
 
-  result = await tttt.oki( () => {
+  result = await tttt.oki( async () => {
     return tttt.resolvers( data.message, 'this method accept only Array that have at least two entries or multiple of 2' )
   } )
 
@@ -62,10 +66,24 @@ export default async ( id ) => {
   }
   else tttt.describe( Blaze.green( 'test passed' ) )
 
-  data = await dissect_prop_val( 'string:json|activate:true', '|' )
+  tttt.describe( '# data given correctly JSON string' )
+  data = await dissect_prop_val( 'string:json|activate:true', '|' ).catch( error => error )
 
-  result = await tttt.deeeeepStrictEqual( () => {
+  result = await tttt.deeeeepStrictEqual( async () => {
     return tttt.resolvers( data, JSON.stringify( { string:'json', activate: 'true' } ) )
+  } )
+
+  if( result instanceof Error ){
+    tttt.describe( Blaze.red( 'test failed' ) )
+    tttt.failed( true )
+  }
+  else tttt.describe( Blaze.green( 'test passed' ) )
+
+  tttt.describe( '# data given correctly JSON string returned testing single [prop:val]' )
+  data = await dissect_prop_val( 'string:json', '|' ).catch( error => error )
+
+  result = await tttt.deeeeepStrictEqual( async () => {
+    return tttt.resolvers( data, JSON.stringify( { string:'json' } ) )
   } )
 
   if( result instanceof Error ){

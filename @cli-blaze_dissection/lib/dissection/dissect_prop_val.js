@@ -31,8 +31,15 @@ export default async function dissect_prop_val( body, scalpel = ':', serialize =
     const option_value_reg_expression = new RegExp( `(.*)[${scalpel}](.*)`, 'g' )
     const body_array_expression = Array.from( body.matchAll( option_value_reg_expression ), body_value_matches => body_value_matches[ 0 ] )
 
-    const dissect = () => {
-      const body_array = body_array_expression[ 0 ].replaceAll( scalpel, ':' ).split( ':' )
+    const single_prop_val = () => {
+      if( body.search( ':' ) !== -1 ) return ( dissect( true ) )()
+      else return null
+    }
+
+    const dissect = ( single = false ) => {
+      let body_array = body.split( ':' )
+      if( !single )
+        body_array = body_array_expression[ 0 ].replaceAll( scalpel, ':' ).split( ':' )
 
       return body_array.length % 2 !== 0
         ? reject( new OftypesError( 'this method accept only Array that have at least two entries or multiple of 2' ) )
@@ -52,7 +59,7 @@ export default async function dissect_prop_val( body, scalpel = ':', serialize =
         }
     }
 
-    resolve( body_array_expression.length > 0 ? ( dissect() )() : null )
+    resolve( body_array_expression.length > 0 ? ( dissect() )() : single_prop_val() )
 
   } )
 }
