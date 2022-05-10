@@ -1,3 +1,4 @@
+import { error } from './shared/error.js'
 import { OftypesError, resolvers, string_ } from 'oftypes'
 
 /**
@@ -13,21 +14,19 @@ import { OftypesError, resolvers, string_ } from 'oftypes'
  */
 export default async function dissect_prop_val( body, scalpel = ':', serialize = false ) {
 
-  let error = { occurred: false, message: undefined }
+  error[ Symbol.for( 'zDissectionError' ) ] = {}
   const falsy = () => {
-    error.occurred = true
-    error.message = new OftypesError( 'body argument must be provided' )
+    error[ Symbol.for( 'zDissectionError' ) ] = { occurred:true, message:'body argument must be provided' }
   }
   const truthy = () => body.length > 0 ? true : ( () => {
-    error.occurred = true
-    error.message = new OftypesError( 'body argument must NOT be empty' )
+    error[ Symbol.for( 'zDissectionError' ) ] = { occurred:true, message:'body argument must NOT be empty' }
   } )()
 
   await( await string_( body, await resolvers( truthy, falsy ) ) )()
 
   return new Promise( ( resolve, reject ) => {
 
-    if( error.occurred ) reject( error.message )
+    if( error[ Symbol.for( 'zDissectionError' ) ].occurred ) reject( error[ Symbol.for( 'zDissectionError' ) ].message )
 
     const option_value_reg_expression = new RegExp( `(.*)[${scalpel}](.*)`, 'g' )
     const body_array_expression = Array.from( body.matchAll( option_value_reg_expression ), body_value_matches => body_value_matches[ 0 ] )
@@ -54,7 +53,6 @@ export default async function dissect_prop_val( body, scalpel = ':', serialize =
     }
 
     resolve( body_array_expression.length > 0 ? ( dissect() )() : null )
-
 
   } )
 }
